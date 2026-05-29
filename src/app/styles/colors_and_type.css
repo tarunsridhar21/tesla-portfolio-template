@@ -1,0 +1,192 @@
+/* =====================================================================
+   Tesla Design System — Colors & Type
+   ---------------------------------------------------------------------
+   Single source of truth for color tokens, type tokens, and base
+   semantic styles. Import once at the document root.
+
+   Font substitution note: Tesla ships "Universal Sans Display" and
+   "Universal Sans Text", a proprietary family. We substitute INTER
+   (Google Fonts) as the nearest open equivalent — geometric sans
+   with humanist terminals, weights 400 and 500 available.
+   ===================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+:root {
+  /* ---------- COLOR — Primary ---------- */
+  --tds-electric-blue:   #3E6AE1;   /* Sole chromatic accent — primary CTA */
+  --tds-electric-blue-hover: #3457B2;
+  --tds-white:           #FFFFFF;
+
+  /* ---------- COLOR — Surfaces ---------- */
+  --tds-white-canvas:    #FFFFFF;   /* Page bg */
+  --tds-light-ash:       #F4F4F4;   /* Alternate surface */
+  --tds-carbon-dark:     #171A20;   /* Dark surface / hero text */
+  --tds-frosted-glass:   rgba(255, 255, 255, 0.75);
+
+  /* ---------- COLOR — Text / Neutrals ---------- */
+  --tds-text-primary:    #171A20;   /* Carbon Dark — headings, nav */
+  --tds-text-body:       #393C41;   /* Graphite — body */
+  --tds-text-tertiary:   #5C5E62;   /* Pewter — sub-links */
+  --tds-text-placeholder:#8E8E8E;   /* Silver Fog */
+  --tds-border:          #EEEEEE;   /* Cloud Gray */
+  --tds-border-subtle:   #D0D1D2;   /* Pale Silver */
+
+  /* ---------- COLOR — Overlay ---------- */
+  --tds-overlay-modal:   rgba(128, 128, 128, 0.65);
+  --tds-overlay-hover:   rgba(0, 0, 0, 0.05);
+
+  /* ---------- TYPE — Family ---------- */
+  --tds-font-display: "Universal Sans Display", "Inter", -apple-system, Arial, sans-serif;
+  --tds-font-text:    "Universal Sans Text",    "Inter", -apple-system, Arial, sans-serif;
+
+  /* ---------- TYPE — Scale ---------- */
+  --tds-fs-hero:      40px;
+  --tds-fs-promo:     22px;
+  --tds-fs-product:   17px;
+  --tds-fs-category:  16px;
+  --tds-fs-body:      14px;
+
+  /* ---------- TYPE — Weight ---------- */
+  --tds-fw-regular:   400;
+  --tds-fw-medium:    500;
+
+  /* ---------- TYPE — Line Height ---------- */
+  --tds-lh-tight:     1.20;
+  --tds-lh-snug:      1.18;
+  --tds-lh-normal:    1.43;
+
+  /* ---------- SPACING (8px base) ---------- */
+  --tds-space-0:   0px;
+  --tds-space-1:   4px;
+  --tds-space-2:   8px;
+  --tds-space-3:   16px;
+  --tds-space-4:   24px;
+  --tds-space-5:   32px;
+  --tds-space-6:   48px;
+  --tds-space-7:   64px;
+  --tds-space-8:   96px;
+
+  /* ---------- RADII ---------- */
+  --tds-radius-0:    0px;     /* default */
+  --tds-radius-sm:   4px;     /* buttons, nav items */
+  --tds-radius-lg:   12px;    /* category cards */
+  --tds-radius-full: 9999px;  /* dot indicators */
+
+  /* ---------- ELEVATION ---------- */
+  --tds-shadow-none:   none;
+  --tds-shadow-subtle: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+  /* ---------- MOTION ---------- */
+  --tds-ease:        cubic-bezier(0.5, 0, 0, 0.75);
+  --tds-duration:    0.33s;
+  --tds-duration-fast: 0.25s;
+
+  /* ---------- LAYOUT ---------- */
+  --tds-max-width:   1383px;
+  --tds-nav-height:  56px;
+
+  /* ---------- SEMANTIC ALIASES ---------- */
+  --bg:        var(--tds-white-canvas);
+  --fg1:       var(--tds-text-primary);
+  --fg2:       var(--tds-text-body);
+  --fg3:       var(--tds-text-tertiary);
+  --fg-mute:   var(--tds-text-placeholder);
+  --accent:    var(--tds-electric-blue);
+  --border:    var(--tds-border);
+  --surface-alt: var(--tds-light-ash);
+}
+
+/* =====================================================================
+   Base reset & body defaults
+   ===================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--fg2);
+  font-family: var(--tds-font-text);
+  font-size: var(--tds-fs-body);
+  font-weight: var(--tds-fw-regular);
+  line-height: var(--tds-lh-normal);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* =====================================================================
+   Semantic type roles — drop-in tags
+   ===================================================================== */
+
+.tds-hero,
+h1.tds {
+  font-family: var(--tds-font-display);
+  font-size: var(--tds-fs-hero);
+  font-weight: var(--tds-fw-medium);
+  line-height: var(--tds-lh-tight);
+  color: var(--fg1);
+  margin: 0;
+}
+
+.tds-promo {
+  font-family: var(--tds-font-text);
+  font-size: var(--tds-fs-promo);
+  font-weight: var(--tds-fw-regular);
+  line-height: 0.91;
+  color: var(--accent);
+  margin: 0;
+}
+
+.tds-product,
+h2.tds {
+  font-family: var(--tds-font-text);
+  font-size: var(--tds-fs-product);
+  font-weight: var(--tds-fw-medium);
+  line-height: var(--tds-lh-snug);
+  color: var(--fg1);
+  margin: 0;
+}
+
+.tds-category {
+  font-family: var(--tds-font-text);
+  font-size: var(--tds-fs-category);
+  font-weight: var(--tds-fw-medium);
+  color: var(--tds-white);
+  margin: 0;
+}
+
+.tds-nav-item {
+  font-family: var(--tds-font-text);
+  font-size: var(--tds-fs-body);
+  font-weight: var(--tds-fw-medium);
+  line-height: var(--tds-lh-tight);
+  color: var(--fg1);
+}
+
+.tds-body,
+p.tds {
+  font-family: var(--tds-font-text);
+  font-size: var(--tds-fs-body);
+  font-weight: var(--tds-fw-regular);
+  line-height: var(--tds-lh-normal);
+  color: var(--fg2);
+  margin: 0;
+}
+
+.tds-link {
+  font-family: var(--tds-font-text);
+  font-size: var(--tds-fs-body);
+  font-weight: var(--tds-fw-regular);
+  color: var(--fg3);
+  text-decoration: none;
+  transition: color var(--tds-duration), box-shadow var(--tds-duration) var(--tds-ease);
+}
+.tds-link:hover { color: var(--fg1); text-decoration: underline; }
+
+.tds-wordmark {
+  font-family: var(--tds-font-display);
+  font-weight: var(--tds-fw-medium);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--fg1);
+}
